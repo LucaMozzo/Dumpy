@@ -13,7 +13,6 @@
 	</style>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-
 </head>
 <body>
 <div class="container vertical-center text-center">
@@ -25,11 +24,11 @@
 		<div class="input-group">
 			<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
 			<input type="text" name = "class_code" class="form-control" placeholder="Create a unique code for your class"/>
-					 <span class="input-group-btn">
-					   <input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn"/>
-				   </span>
+				<span class="input-group-btn">
+		  			<input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn"/>
+			    </span>
 		</div>
-		<div class="text-center">
+		<div class="form-group text-center">
 			<input type="submit" class="btn btn-success" name = "submit" value="Create classroom"/>
 		</div>
 	</form>
