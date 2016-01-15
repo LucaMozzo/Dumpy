@@ -21,7 +21,7 @@
 		}
 
 		.background-image {
-			background-image: url('http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_527bf56961712_1.JPG');
+			background-image: url('http://learnimplementshare.com/wp-content/uploads/2015/04/About-Learn-Implement-Share-2.jpg');
 			background-size: cover;
 			display: block;
 			filter: blur(5px);
@@ -41,8 +41,22 @@
 			z-index: 2;
 			padding: 0 10px;
 		}
+
+		.navbar {
+			left: 0;
+			position: fixed;
+			right: 0;
+			z-index: 2;
+			padding: 0 10px;
+		}
+
+		.jumbotron {
+			background: rgb(255, 254, 238); /* This is for ie8 and below */
+			background: rgba(255, 254, 238, 0.7);
+		}
 	</style>
 </head>
+<div class="background-image"></div>
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -52,8 +66,8 @@
 	</div>
 </nav>
 
-<body class="pietro">
-<div class="background-image"></div>
+<body>
+
 <div class="container">
 	<div class="text-center">
 		<div class="jumbotron vertical-center">
