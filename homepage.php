@@ -73,14 +73,18 @@
 		<div class="jumbotron vertical-center">
 			<h1>Hey, learner!</h1>
 			<p>Benefit of lots of resources, join an existing group or create your own.</p>
-			<input class="btn btn-primary" type="button" onclick="newClass()" value="Create a new Classroom" />
-			<input class="btn btn-default" type="button"  value="Join a classroom" />
+			<input class="btn btn-primary" type="button" onclick="openNewClass()" value="Create a new Classroom" />
+			<input class="btn btn-default" type="button"  onclick="openJoinClass()" value="Join a classroom" />
 		</div>
 	</div>
 </div>
 <script>
-	function newClass(){
+	function openNewClass(){
 		window.open("http://www.dumpy.altervista.org/new_classroom.php", "_self");// _self opens the page in the same tab
+	}
+
+	function openJoinClass(){
+		window.open("/join_classroom.php", "_self");
 	}
 </script>
 </body>
