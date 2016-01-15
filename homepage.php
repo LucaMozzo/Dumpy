@@ -80,7 +80,7 @@
 </div>
 <script>
 	function newClass(){
-		window.open("http://www.dumpy.altervista.org/new_classroom.php");
+		window.open("http://www.dumpy.altervista.org/new_classroom.php", "_self");// _self opens the page in the same tab
 	}
 </script>
 </body>
