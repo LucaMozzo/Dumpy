@@ -56,7 +56,7 @@
 		}
 	</style>
 </head>
-<div class="background-image"></div>
+<div class="background-image"></div> <!-- TODO:copy remote image in local server -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
