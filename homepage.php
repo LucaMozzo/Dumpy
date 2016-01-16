@@ -34,7 +34,7 @@
 		}
 
 		.container {
-			top: 10px;
+			top: 35px;
 			left: 0;
 			position: fixed;
 			right: 0;
