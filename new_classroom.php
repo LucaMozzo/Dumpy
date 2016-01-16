@@ -45,13 +45,11 @@ require_once('mysqli_connection.php');
 if(isset($_POST['submit'])) {
 	$classname = $_POST['class_name'];
 	$classcode = $_POST['class_code'];
-	$query = 'INSERT INTO `classrooms` (`id`, `class_code`, `class_name`) VALUES (NULL, ?, ?)';
-	$stmt = mysqli_prepare($dbc, $query);
-	mysqli_stmt_bind_param($stmt, 'ss', $classcode, $classname);
-	if (@mysqli_stmt_execute($stmt)) {
-		echo("Link added");
-	} else {
-		echo("Failed");
+	if (empty($classname) == false && empty($classcode) == false) {
+		$query = 'INSERT INTO `classrooms` (`id`, `class_code`, `class_name`) VALUES (NULL, ?, ?)';
+		$stmt = mysqli_prepare($dbc, $query);
+		mysqli_stmt_bind_param($stmt, 'ss', $classcode, $classname);
+		@mysqli_stmt_execute($stmt);
 	}
 }
 ?>
