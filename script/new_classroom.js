@@ -7,6 +7,9 @@ function generateClassCode(){
         str += cname.slice(cname.search(" ") + 1, cname.search(" ") + 4);
     }
     else {
+        if(cname.length > 16){
+            cname.slice(15);
+        }
         str+= cname;
     }
     str += Math.floor(Math.random() * 10);
