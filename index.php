@@ -40,10 +40,11 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">  Dumpy <img src="dumpy-logo.png"class="pull-left img-rounded" height="30px" width="30px"> </a>
+				<a class="navbar-brand" href="#">
+					<img src="dumpy-logo.png"class="pull-left img-rounded" height="30px" width="30px"> </a>
 			</div>
 			
-			
+			<!-- Search form -->
 		   	<form class="navbar-form navbar-right">
 			   <div class="input-group">
 				   <input type="text"  class="form-control" id = "se" onchange="showSearch()" placeholder="Search"></input>
@@ -52,25 +53,16 @@
 				   </span>
 			   </div>
 			</form>
-			
-			
-	 	</div>
- 	</nav>
- 	
- 	
-    <div class="container">
-    	<div class="row">
-  			<div class="col-md-4">
-	      		<div id="uploadBox" >
-       				<div id="postLink">
-						<button class='btn' ng-click="showLink = !showLink">Submit a link</button>
-						<button class='btn' ng-click="showImage = !showImage">Upload a File</button>
-            		</div>
-				</div>
-			</div>
+			<!-- Navbar button to upload and submit files-->
+			<div id="postLink">
+				<button class='btn navbar-btn' ng-click="showLink = !showLink">Submit a link</button>
+				<button class='btn navbar-btn' ng-click="showImage = !showImage">Upload a File</button>
+            </div>
 		</div>
-	</div>
+	</nav>
+	
 	<!--Form to add a new link-->
+	<div class = "col-sm-8 center col-md-8 col-md-offset-2">
 	<div class="panel panel-default" ng-if="showLink">
             <div class="panel-heading">Add a new link</div>
                 <div class="panel-body">
@@ -89,7 +81,9 @@
                 </div>
             </div>
 	</div>
-
+</div>
+	<!--Form to add a new file-->
+	<div class = "col-sm-8 center col-md-8 col-md-offset-2">
 	<div class="panel panel-default" ng-if="showImage">
 		<div class="panel-heading">Add a new file</div>
 			<div class="panel-body">
@@ -113,7 +107,7 @@
 			</div>	  
 		</div> 
   </div>
-  
+ </div>
   
   <!-- Main File -->
   
