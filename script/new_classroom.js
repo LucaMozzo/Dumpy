@@ -8,7 +8,7 @@ function generateClassCode(){
     }
     else {
         if(cname.length > 16){
-            cname.slice(15);
+            cname = cname.slice(0, 16);
         }
         str+= cname;
     }
