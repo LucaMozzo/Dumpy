@@ -8,6 +8,8 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Dumpy</title>
 	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -16,17 +18,54 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	<![endif]-->
+    <![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"/></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
 	<script>
 
 		$(document).ready(function(){
+
 			$('#added').hide();
 			$('#file_show').hide();
 			$('#link_show').hide();
 
+			$('body').on("click",".click_like",function() {
+				var i_d = $(this).attr("id");
+				var data = {id:i_d};
+				$.ajax({
+					type: "POST",
+					data:  data,
+					url: "http://www.dumpy.altervista.org/add_Like.php",
+					success: function(response) {
+				
+						$.post( url, function( data ) {
+
+							$('#txtHint').html(data);
+
+						});
+
+					}
+				});
+			});
+			$('body').on("click",".click_notlike",function() {
+				var i_d = $(this).attr("id");
+				var data = {id:i_d};
+				$.ajax({
+					type: "POST",
+					data:  data,
+					url: "http://www.dumpy.altervista.org/add_Not_Like.php",
+					success: function(response) {
+				
+						$.post( url, function( data ) {
+
+							$('#txtHint').html(data);
+
+						});
+
+					}
+				});
+			});
 
 			var url = "http://www.dumpy.altervista.org/show.php";
 
@@ -39,6 +78,20 @@
 			$.post( url, function( data ) {
 
 				$('#txtHint').html(data);
+
+			});
+			$('#btn').click(function(){
+				var query = $('#se').val();
+				var query_data = {q:query};
+				$.ajax({
+					type: 'POST',
+					url: "http://dumpy.altervista.org/search.php",
+					data: query_data,
+					success: function(response) {
+
+							$('#txtHint').html(response);
+					}
+				});
 
 			});
 			$('#submit').click(function(){
@@ -57,7 +110,7 @@
 						setTimeout(function() {
 							$('#added').hide();
 
-						}, 5000);
+						}, 3000);
 
 						$('#added').html(response);
 
@@ -117,10 +170,10 @@
 		<!-- Search form -->
 		<form class="navbar-form navbar-right">
 			<div class="input-group">
-				<input type="text"  class="form-control" id = "se" onchange="showSearch()" placeholder="Search"></input>
-				   <span class="input-group-btn">
-					   <input type="submit" class="btn btn-primary" value="Search" id = "btn"></input>
-				   </span>
+				<input type="text"  class="form-control" id = "se" placeholder="Search" autocomplete="off"></input>
+				<span class="input-group-btn">
+					<input type="submit" class="btn btn-primary" value="Search" id = "btn"></input>
+				</span>
 			</div>
 		</form>
 		<!-- Navbar button to upload and submit files-->
@@ -142,10 +195,10 @@
 		<div class="panel-body">
 
 			<div class="form-group">
-				<input type="text"  class="form-control" id = "title" placeholder="Enter a link name"></input>
+				<input type="text"  class="form-control" id = "title" placeholder="Enter a link"></input>
 			</div>
 			<div class="form-group">
-				<input type="text" id = "address" class="form-control" placeholder="Enter a link"></input>
+				<input type="text" id = "address" class="form-control" placeholder="Enter a link name"></input>
 			</div>
 			<div class="form-group">
 				<input type="text"  class="form-control" id = "comment" placeholder="Enter a comment"></input>
@@ -173,7 +226,7 @@
 				<div class="form-group">
 					<input type="text"  class="form-control" id = "comment_file" placeholder="Enter a comment"></input>
 				</div>
-
+					
 				<input type="submit" class="btn btn-success"  id = "submitfile" value="Submit"></input>
 			</form>
 		</div>
@@ -185,20 +238,17 @@
 </div>
 
 <!-- Main File -->
-
+  
 <div class="col-sm-8 center col-md-8 col-md-offset-2">
 
 	<div id = "txtHint">
-
+	
 	</div>
-
+	
 
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
-</body>
-</html>
+<script src="https://

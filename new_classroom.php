@@ -15,6 +15,27 @@
 	</style>
 	<script src="lib/jquery-1.12.0.min.js"></script>
 	<script src="script/new_classroom.js"> </script>
+	<script>
+		var editMode = false;
+		$(document).ready(function(){
+			//edit button action
+			$('#edit-id-btn').click(function(){
+				if(editMode == false) {
+					$("#classcode").prop("readonly", false);
+					$("#edit-id-btn").prop("value", "Done");
+					$("#edit-id-btn").prop("class", "btn btn-primary");
+					document.getElementById("classcode").focus();
+					editMode = true;
+				}
+				else {
+					$("#classcode").prop("readonly", true);
+					$("#edit-id-btn").prop("value", "Edit");
+					$("#edit-id-btn").prop("class", "btn btn-default");
+					editMode=false;
+				}
+			});
+		});
+	</script>
 </head>
 <body>
 <div class="container vertical-center text-center">
@@ -29,7 +50,7 @@
 					<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
 					<input id="classcode" type="text" name="class_code" class="form-control" placeholder="Create unique code for your class" readonly/>
 					<span class="input-group-btn">
-						<input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn" onclick="editBtn()"/>
+						<input type="button" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn"/>
 					</span>
 				</div>
 			</div>

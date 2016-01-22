@@ -20,14 +20,3 @@ function generateClassCode(){
     document.getElementById("classcode").value = str;
 }
 
-//edit button action
-function editBtn(){
-    if($("#editbtn").text() == "Edit") {
-        $("#classcode").prop("readonly", false);
-        $("#editbtn").text("Done");
-    }
-    else {
-        $("#classcode").prop("readonly", true);
-        $("#editbtn").text("Edit");
-    }
-}
