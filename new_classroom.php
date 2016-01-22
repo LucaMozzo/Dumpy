@@ -13,6 +13,7 @@
 			margin-top: 9%;
 		}
 	</style>
+	<script src="lib/jquery-1.12.0.min.js"></script>
 	<script src="script/new_classroom.js"> </script>
 </head>
 <body>
@@ -28,7 +29,7 @@
 					<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
 					<input id="classcode" type="text" name="class_code" class="form-control" placeholder="Create unique code for your class" readonly/>
 					<span class="input-group-btn">
-						<input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn"/>
+						<input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn" onclick="editBtn()"/>
 					</span>
 				</div>
 			</div>

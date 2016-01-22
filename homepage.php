@@ -73,8 +73,12 @@
 		<div class="jumbotron vertical-center">
 			<h1>Hey, learner!</h1>
 			<p>Benefit of lots of resources, join an existing group or create your own.</p>
-			<input class="btn btn-primary" type="button" onclick="openNewClass()" value="Create a new Classroom" />
-			<input class="btn btn-default" type="button"  onclick="openJoinClass()" value="Join a classroom" />
+			<form class="form-group">
+				<input class="btn btn-primary" type="button" onclick="openNewClass()" value="Create a new Classroom" />
+			</form>
+			<form class="form-group">
+				<input class="btn btn-default" type="button"  onclick="openJoinClass()" value="Join a classroom" />
+			</form>
 		</div>
 	</div>
 </div>
