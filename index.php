@@ -34,7 +34,7 @@
 				$('#file_show').toggle();
 			});
 			$('#showLink').click(function(){
-				$('#file_show').toggle();
+				$('#link_show').toggle();
 			});
 			$.post( url, function( data ) {
 
