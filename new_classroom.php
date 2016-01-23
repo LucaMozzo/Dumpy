@@ -82,7 +82,7 @@
 					if(response == 0 ){
 
 						$('#error').show();
-						$('#error').html("The name already exists, please change!");
+						$('#error').html("The name already exists, please change it!");
 
 					} else {
 
