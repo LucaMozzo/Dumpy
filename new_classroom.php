@@ -70,21 +70,24 @@
 		$('#error').hide();
 
 		$('#submit').click(function(){
-			var classname = $('classname').val();
-			var classcode = $('classcode').val();
-			console.log(classcode);
-			console.log(classname);
+			var classname = $('#classname').val();
+			var classcode = $('#classcode').val();
 			var data = {name:classname,code:classcode};
 			$.ajax({
 				type: "POST",
 				data:  data,
 				url: "http://www.dumpy.altervista.org/add_classroom.php",
 				success: function(response) {
-					if (response === "true"){
-						window.open("signup.php");
+					console.log(response);
+					if(response == 0 ){
+
+						$('#error').show();
+						$('#error').html("The name already exists, please change!");
+
 					} else {
 
-						console.log("Classe fail");
+						window.open("signup.php");
+
 					}
 				}
 			});

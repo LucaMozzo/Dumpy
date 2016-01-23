@@ -1,24 +1,22 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-require_once('mysqli_connection.php');
-$name = $_POST['n'];
-$comment = $_POST['c'];
-$title = $_POST['l'];
-$file_type_links = "l";
+	
+	require_once('mysqli_connection.php');
 
-$query = "INSERT INTO `files`(`id`,`name`,`comment`,`title`,`file_type`) VALUES(NULL ,?,?,?,?)";
+	$name = $_POST['n'];
+    $title = $_POST['l'];
+    $comment = $_POST['c'];
+    $file_type_links = "l";
+
+    
+      $query = "INSERT INTO `files`(`id`,`name`,`comment`,`title`,`file_type`) VALUES(NULL ,?,?,?,?)";
 				 
-$stmt = mysqli_prepare($dbc,$query);
+		$stmt = mysqli_prepare($dbc,$query);
 				 
-mysqli_stmt_bind_param($stmt, 'ssss', $name,$comment,$title,$file_type_links);
+		mysqli_stmt_bind_param($stmt, 'ssss', $address,$comment,$title,$file_type_links);	
 					 
-if(@mysqli_stmt_execute($stmt)){
+		if(@mysqli_stmt_execute($stmt)){
 			
-	echo("Link added");
+			echo("Link added");
 			
-} else {
-
-	echo("Failed");
-
-}
+		}
 ?>
