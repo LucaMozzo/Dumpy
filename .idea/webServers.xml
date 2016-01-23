@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="3b5c610c-12c0-4482-b7f8-e785c4916bd1" name="Dumpy" url="http://ftp.dumpy.altervista.org">
+      <webServer id="3b5c610c-12c0-4482-b7f8-e785c4916bd1" name="Dumpy (project level)" url="http://ftp.dumpy.altervista.org">
         <fileTransfer host="ftp.dumpy.altervista.org" port="21" username="dumpy">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
