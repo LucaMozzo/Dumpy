@@ -1,254 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" ng-app>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <head>
+	<!-- Bootstrap -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, max-scale=1, user-scalable=no"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Dumpy</title>
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<style>
+		.vertical-center{
+			margin-top: 9%;
+		}
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		.navbar-header img{
+			margin-top: 7px;
+			margin-right: 10px;
+			margin-left: 10px;
+			margin-bottom: 7px;
+		}
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		.background-image {
+			background-image: url('http://learnimplementshare.com/wp-content/uploads/2015/04/About-Learn-Implement-Share-2.jpg');
+			background-size: cover;
+			display: block;
+			filter: blur(5px);
+			-webkit-filter: blur(5px);
+			height: 800px;
+			left: 0;
+			position: fixed;
+			right: 0;
+			z-index: 1;
+		}
 
-    <![endif]-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"/></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		.container {
+			top: 35px;
+			left: 0;
+			position: fixed;
+			right: 0;
+			z-index: 2;
+			padding: 0 10px;
+		}
 
-	<script>
+		.navbar {
+			left: 0;
+			position: fixed;
+			right: 0;
+			z-index: 2;
+			padding: 0 10px;
+		}
 
-		$(document).ready(function(){
-
-			$('#added').hide();
-			$('#file_show').hide();
-			$('#link_show').hide();
-
-			$('body').on("click",".click_like",function() {
-				var i_d = $(this).attr("id");
-				var data = {id:i_d};
-				$.ajax({
-					type: "POST",
-					data:  data,
-					url: "http://www.dumpy.altervista.org/add_Like.php",
-					success: function(response) {
-				
-						$.post( url, function( data ) {
-
-							$('#txtHint').html(data);
-
-						});
-
-					}
-				});
-			});
-			$('body').on("click",".click_notlike",function() {
-				var i_d = $(this).attr("id");
-				var data = {id:i_d};
-				$.ajax({
-					type: "POST",
-					data:  data,
-					url: "http://www.dumpy.altervista.org/add_Not_Like.php",
-					success: function(response) {
-				
-						$.post( url, function( data ) {
-
-							$('#txtHint').html(data);
-
-						});
-
-					}
-				});
-			});
-
-			var url = "http://www.dumpy.altervista.org/show.php";
-
-			$('#showFile').click(function(){
-				$('#file_show').toggle();
-			});
-			$('#showLink').click(function(){
-				$('#link_show').toggle();
-			});
-			$.post( url, function( data ) {
-
-				$('#txtHint').html(data);
-
-			});
-			$('#btn').click(function(){
-				var query = $('#se').val();
-				var query_data = {q:query};
-				$.ajax({
-					type: 'POST',
-					url: "http://dumpy.altervista.org/search.php",
-					data: query_data,
-					success: function(response) {
-
-							$('#txtHint').html(response);
-					}
-				});
-
-			});
-			$('#submit').click(function(){
-				var link = $('#address').val();
-				var comment = $('#comment').val();
-				var name = $('#title').val();
-				var links = {l:link,c:comment,n:name};
-				$.ajax({
-					type: 'POST',
-					url: "http://dumpy.altervista.org/add_Link.php",
-					data: links,
-					success: function(response) {
-						$('#added').show();
-						$('#link_show').hide();
-
-						setTimeout(function() {
-							$('#added').hide();
-
-						}, 3000);
-
-						$('#added').html(response);
-
-						$.post( url, function( data ) {
-
-							$('#txtHint').html(data);
-
-						});
-					}
-				});
-
-			});
-
-			$('#submitfile').click(function(){
-				var title = $('#title_file').val();
-				var comment = $('#comment_file').val();
-				var file = $('#doc').val();
-				var files = {l:title,c:comment,f:file};
-				$.ajax({
-					type: 'POST',
-					url: "http://dumpy.altervista.org/add_File.php",
-					data: files,
-					success: function(response) {
-						$('#added').show();
-						$('#file_show').hide();
-
-						setTimeout(function() {
-							$('#added').hide();
-
-						}, 5000);
-
-						$('#added').html(response);
-
-						$.post( url, function( data ) {
-
-							$('#txtHint').html(data);
-
-						});
-					}
-				});
-
-			});
-
-		});
-
-	</script>
-
+		.jumbotron {
+			background: rgb(255, 254, 238); /* This is for ie8 and below */
+			background: rgba(255, 254, 238, 0.7);
+		}
+	</style>
 </head>
-<body>
+<div class="background-image"></div> <!-- TODO:copy remote image in local server -->
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">
-				<img src="dumpy-logo.png"class="pull-left img-rounded" height="30px" width="30px"> </a>
-		</div>
-
-		<!-- Search form -->
-		<form class="navbar-form navbar-right">
-			<div class="input-group">
-				<input type="text"  class="form-control" id = "se" placeholder="Search" autocomplete="off"></input>
-				<span class="input-group-btn">
-					<input type="submit" class="btn btn-primary" value="Search" id = "btn"></input>
-				</span>
-			</div>
-		</form>
-		<!-- Navbar button to upload and submit files-->
-		<div id="postLink">
-			<button class='btn navbar-btn' ng-click="showLink = !showLink" id = "showLink">Submit a link</button>
-			<button class='btn navbar-btn' ng-click="showImage = !showImage" id = "showFile">Upload a File</button>
+			<img src="dumpy-logo.png"class="pull-left" height="35px" width="35px" style = "padding-left: -5px;"> </a>
 		</div>
 	</div>
 </nav>
-<div class = "col-sm-8 center col-md-8 col-md-offset-2">
-	<div class="alert alert-success" id="added">
 
-	</div>
-</div>
-<!--Form to add a new link-->
-<div class = "col-sm-8 center col-md-8 col-md-offset-2">
-	<div class="panel panel-default" id ="link_show" >
-		<div class="panel-heading">Add a new link</div>
-		<div class="panel-body">
+<body>
 
-			<div class="form-group">
-				<input type="text"  class="form-control" id = "title" placeholder="Enter a link"></input>
-			</div>
-			<div class="form-group">
-				<input type="text" id = "address" class="form-control" placeholder="Enter a link name"></input>
-			</div>
-			<div class="form-group">
-				<input type="text"  class="form-control" id = "comment" placeholder="Enter a comment"></input>
-			</div>
-			<input type="submit" class="btn btn-success" id = "submit" value="Upload"></input>
-
-		</div>
-	</div>
-</div>
-</div>
-
-<!--Form to add a new file-->
-<div class = "col-sm-8 center col-md-8 col-md-offset-2">
-	<div class="panel panel-default" id = "file_show" >
-		<div class="panel-heading">Add a new file</div>
-		<div class="panel-body">
-			<form method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<input type="file" id = "doc" </input>
-				</div>
-				<div class="form-group">
-					<input type="text"  class="form-control" id = "title_file" placeholder="Enter a file name"></input>
-				</div>
-
-				<div class="form-group">
-					<input type="text"  class="form-control" id = "comment_file" placeholder="Enter a comment"></input>
-				</div>
-					
-				<input type="submit" class="btn btn-success"  id = "submitfile" value="Submit"></input>
+<div class="container">
+	<div class="text-center">
+		<div class="jumbotron vertical-center">
+			<h1>Hey, learner!</h1>
+			<p>Benefit of lots of resources, join an existing group or create your own.</p>
+			<form class="form-group">
+				<input class="btn btn-primary" type="button" onclick="openNewClass()" value="Create a new Classroom" />
+			</form>
+			<form class="form-group">
+				<input class="btn btn-default" type="button"  onclick="openJoinClass()" value="Join a classroom" />
 			</form>
 		</div>
 	</div>
 </div>
-</div>
-</div>
-</div>
-</div>
+<script>
+	function openNewClass(){
+		window.open("http://www.dumpy.altervista.org/new_classroom.php", "_self");// _self opens the page in the same tab
+	}
 
-<!-- Main File -->
-  
-<div class="col-sm-8 center col-md-8 col-md-offset-2">
-
-	<div id = "txtHint">
-	
-	</div>
-	
-
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://
+	function openJoinClass(){
+		window.open("/join_classroom.php", "_self");
+	}
+</script>
+</body>
+</html>

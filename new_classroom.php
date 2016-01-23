@@ -39,41 +39,59 @@
 </head>
 <body>
 <div class="container vertical-center text-center">
-	<h1>Let's create a new Classroom!</h1>
-	<form method="post" action="new_classroom.php">
-		<div class="col-sm-8 center col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<input type="text" id="classname"  class="form-control" name ="class_name" placeholder="Give a name to the classroom" onchange="generateClassCode()"/>
-			</div>
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
-					<input id="classcode" type="text" name="class_code" class="form-control" placeholder="Create unique code for your class" readonly/>
-					<span class="input-group-btn">
-						<input type="button" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn"/>
-					</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="text-center">
-					<input type="submit" class="btn btn-success" name="submit" value="Create classroom"/>
-				</div>
-			</div>
+
+<h1>Let's create a new Classroom!</h1>
+<div class="col-sm-8 center col-md-8 col-md-offset-2">
+	<div class="alert alert-danger" id="error">
+	</div>
+	<div class="form-group">
+		<input type="text" id="classname" autocomplete="off" class="form-control" name ="class_name" placeholder="Give a name to the classroom" onchange="generateClassCode()"/>
+	</div>
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
+			<input id="classcode" type="text" name="class_code" autocomplete="off" class="form-control" placeholder="Create unique code for your class" readonly/>
+			<span class="input-group-btn">
+				<input type="button" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn"/>
+			</span>
 		</div>
-	</form>
+	</div>
+	<div class="form-group">
+		<div class="text-center">
+			<input type="submit" class="btn btn-success" id="submit" value="Create classroom"/>
+		</div>
+	</div>
 </div>
-<?php
-require_once('mysqli_connection.php');
-if(isset($_POST['submit'])) {
-	$classname = $_POST['class_name'];
-	$classcode = $_POST['class_code'];
-	if (empty($classname) == false && empty($classcode) == false) {
-		$query = 'INSERT INTO `classrooms` (`id`, `class_code`, `class_name`) VALUES (NULL, ?, ?)';
-		$stmt = mysqli_prepare($dbc, $query);
-		mysqli_stmt_bind_param($stmt, 'ss', $classcode, $classname);
-		@mysqli_stmt_execute($stmt);
-	}
-}
-?>
+</div>
+
+<script>
+
+	$(document).ready(function(){
+		$('#error').hide();
+
+		$('#submit').click(function(){
+			var classname = $('classname').val();
+			var classcode = $('classcode').val();
+			console.log(classcode);
+			console.log(classname);
+			var data = {name:classname,code:classcode};
+			$.ajax({
+				type: "POST",
+				data:  data,
+				url: "http://www.dumpy.altervista.org/add_classroom.php",
+				success: function(response) {
+					if (response === "true"){
+						window.open("signup.php");
+					} else {
+
+						console.log("Classe fail");
+					}
+				}
+			});
+
+		});
+
+	});
+</script>
 </body>
 </html>
