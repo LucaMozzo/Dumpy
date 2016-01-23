@@ -22,7 +22,7 @@ if(mysqli_num_rows($response) == 0){
 
     } else {
 
-        echo ("Not Added");
+        echo ("Not Added yet");
 
     }
 
