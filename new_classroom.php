@@ -13,55 +13,32 @@
 			margin-top: 9%;
 		}
 	</style>
-	<script src="lib/jquery-1.12.0.min.js"></script>
 	<script src="script/new_classroom.js"> </script>
-	<script>
-		var editMode = false;
-		$(document).ready(function(){
-			//edit button action
-			$('#edit-id-btn').click(function(){
-				if(editMode == false) {
-					$("#classcode").prop("readonly", false);
-					$("#edit-id-btn").prop("value", "Done");
-					$("#edit-id-btn").prop("class", "btn btn-primary");
-					document.getElementById("classcode").focus();
-					editMode = true;
-				}
-				else {
-					$("#classcode").prop("readonly", true);
-					$("#edit-id-btn").prop("value", "Edit");
-					$("#edit-id-btn").prop("class", "btn btn-default");
-					editMode=false;
-				}
-			});
-		});
-	</script>
 </head>
 <body>
 <div class="container vertical-center text-center">
-
-<h1>Let's create a new Classroom!</h1>
-<div class="col-sm-8 center col-md-8 col-md-offset-2">
-	<div class="alert alert-danger" id="error">
-	</div>
-	<div class="form-group">
-		<input type="text" id="classname" autocomplete="off" class="form-control" name ="class_name" placeholder="Give a name to the classroom" onchange="generateClassCode()"/>
-	</div>
-	<div class="form-group">
-		<div class="input-group">
-			<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
-			<input id="classcode" type="text" name="class_code" autocomplete="off" class="form-control" placeholder="Create unique code for your class" readonly/>
-			<span class="input-group-btn">
-				<input type="button" class="btn btn-default" value="Edit" id ="edit-id-btn" name="editbtn"/>
-			</span>
+	<h1>Let's create a new Classroom!</h1>
+	<form method="post" action="new_classroom.php">
+		<div class="col-sm-8 center col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<input type="text" id="classname"  class="form-control" name ="class_name" placeholder="Give a name to the classroom" onchange="generateClassCode()"/>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon">https://dumpy.altervista.org/classroom/</span>
+					<input id="classcode" type="text" name="class_code" class="form-control" placeholder="Create unique code for your class" readonly/>
+					<span class="input-group-btn">
+						<input type="submit" class="btn btn-default" value="Edit" id ="edit-id-btn"/>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="text-center">
+					<input type="submit" class="btn btn-success" name="submit" value="Create classroom"/>
+				</div>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<div class="text-center">
-			<input type="submit" class="btn btn-success" id="submit" value="Create classroom"/>
-		</div>
-	</div>
-</div>
+	</form>
 </div>
 
 <script>
