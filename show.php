@@ -1,5 +1,7 @@
-	<?php 
-		require_once('mysqli_connection.php');
+<?php
+	header('Access-Control-Allow-Origin: *');
+
+	require_once('mysqli_connection.php');
 		
 	//Query to display files from the database
 	//Database table files / fields: id,name,likes,comment
@@ -39,8 +41,10 @@
 				echo '<p class="text-muted">'.$row['comment'].'</p>';
 
 				echo '<p class="list-group-item-text">';
-			    echo '<a href="?like=true&id=' . $row['id'] . '">Like</a> ';
-					echo '<a href="?like=false&id=' . $row['id'] . '">Not like</a> ';
+			    echo '<a class = "click_like" id = "'.$row['id'].'">Like <i class="fa fa-thumbs-o-up"></i>
+</a> ';
+					echo '<a class = "click_notlike" id = "'.$row['id'].'">Dislike <i class="fa fa-thumbs-o-down"></i>
+</a> ';
 
 			    echo '</p>';
 
@@ -53,36 +57,6 @@
 	 
 	echo 'Could not issue database query';
 	echo mysqli_error($dbc);
-	}
-
-/*
-	//GET request for likes, identifies links with a system of id passed in the URL
-
-	if (isset($_GET['like'])) {
-
-		if($_GET['like'] == 'true' ){
-
-				$query = "UPDATE files 
-				SET likes = likes + 1 
-				WHERE id = " . $_GET['id'];
-	
-				}
-				else 
-				{
-					
-				$query = "UPDATE files 
-				SET likes = likes - 1 
-				WHERE id = " . $_GET['id'];
-	
-					
-				}
-				
-				
-			     @mysqli_query($dbc, $query);
-				
-		}
-*/
-		
+	}		
 		?>
-		
 			
