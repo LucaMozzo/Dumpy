@@ -36,9 +36,17 @@
     <div class="text-center">
         <div class="col-sm-4"></div>
         <div class="col-sm-4 center col-md-8 col-md-offset-2">
-            <div class="alert alert-success" style="margin-top: 30px">
+            <!-- alerts -->
+            <div class="alert alert-success" style="margin-top: 20px">
                 <strong>Success!</strong> Check your email for confirmation
             </div>
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Username or email already taken. If you already have an account, please <a id="change-to-login" href="#">log in</a>
+            </div>
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> Login failed! Check email/password and try again. New to Dumpy? <a id="change-to-signup" href="#">sign up</a>
+            </div>
+
             <div class="jumbotron vertical-center">
                 <form method="post" action="signup.php" id="signup-form">
 
