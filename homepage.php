@@ -124,36 +124,25 @@
 
 			});
 
-			$('#submitfile').click(function(){
-				var title = $('#title_file').val();
-				var comment = $('#comment_file').val();
-				var file = $('#doc').val();
-				var files = {l:title,c:comment,f:file};
+			$('body').on("click","#submitfile",function() {
+				var file_data = $('#doc').prop('files')[0];
+				var form_data = new FormData();
+				console.log("FILE");
+				form_data.append('file', file_data);
+				alert(form_data);
 				$.ajax({
-					type: 'POST',
-					url: "http://dumpy.altervista.org/add_File.php",
-					data: files,
-					success: function(response) {
-						$('#added').show();
-						$('#file_show').hide();
-
-						setTimeout(function() {
-							$('#added').hide();
-
-						}, 5000);
-
-						$('#added').html(response);
-
-						$.post( url, function( data ) {
-
-							$('#txtHint').html(data);
-
-						});
+					url: 'upload.php', // point to server-side PHP script
+					dataType: 'text',  // what to expect back from the PHP script, if anything
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					type: 'post',
+					success: function(php_script_response){
+						alert(php_script_response); // display response from the PHP script, if any
 					}
 				});
-
 			});
-
 		});
 
 	</script>
