@@ -18,7 +18,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-    <![endif]-->
+	<![endif]-->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"/></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
@@ -38,7 +38,7 @@
 					data:  data,
 					url: "http://www.dumpy.altervista.org/add_Like.php",
 					success: function(response) {
-				
+
 						$.post( url, function( data ) {
 
 							$('#txtHint').html(data);
@@ -56,7 +56,7 @@
 					data:  data,
 					url: "http://www.dumpy.altervista.org/add_Not_Like.php",
 					success: function(response) {
-				
+
 						$.post( url, function( data ) {
 
 							$('#txtHint').html(data);
@@ -89,7 +89,7 @@
 					data: query_data,
 					success: function(response) {
 
-							$('#txtHint').html(response);
+						$('#txtHint').html(response);
 					}
 				});
 
@@ -127,11 +127,10 @@
 			$('body').on("click","#submitfile",function() {
 				var file_data = $('#doc').prop('files')[0];
 				var form_data = new FormData();
-				console.log("FILE");
+				console.log(file_data);
 				form_data.append('file', file_data);
-				alert(form_data);
 				$.ajax({
-					url: 'upload.php', // point to server-side PHP script
+					url: 'add_File.php', // point to server-side PHP script
 					dataType: 'text',  // what to expect back from the PHP script, if anything
 					cache: false,
 					contentType: false,
@@ -143,6 +142,7 @@
 					}
 				});
 			});
+
 		});
 
 	</script>
@@ -184,10 +184,10 @@
 		<div class="panel-body">
 
 			<div class="form-group">
-				<input type="text"  class="form-control" id = "title" placeholder="Enter a link"></input>
+				<input type="text"  class="form-control" id = "address" placeholder="Enter a link"></input>
 			</div>
 			<div class="form-group">
-				<input type="text" id = "address" class="form-control" placeholder="Enter a link name"></input>
+				<input type="text" id = "title" class="form-control" placeholder="Enter a link name"></input>
 			</div>
 			<div class="form-group">
 				<input type="text"  class="form-control" id = "comment" placeholder="Enter a comment"></input>
@@ -215,7 +215,7 @@
 				<div class="form-group">
 					<input type="text"  class="form-control" id = "comment_file" placeholder="Enter a comment"></input>
 				</div>
-					
+
 				<input type="submit" class="btn btn-success"  id = "submitfile" value="Submit"></input>
 			</form>
 		</div>
@@ -228,13 +228,14 @@
 <div class="col-sm-8 center col-md-8 col-md-offset-2">
 
 	<div id = "txtHint">
-	
+
 	</div>
-	
+
 
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://
+</body>
+</html>
